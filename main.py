@@ -4,7 +4,7 @@ import time
 from datetime import datetime, timedelta, timezone
 from apscheduler.schedulers.background import BackgroundScheduler
 
-TOKEN = '6033807042:AAGVUHYKdz_bdXDlxzYDWRHtnx1_Erx5hP4'
+TOKEN = 'Your Token'
 
 bot = telebot.TeleBot(TOKEN)
 scheduler = BackgroundScheduler()
