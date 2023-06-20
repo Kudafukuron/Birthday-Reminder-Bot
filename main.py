@@ -136,8 +136,6 @@ def greet(message):
 
 
 def main():
-    app.run()
-
     scheduler.start()
 
     bot.polling()
