@@ -1,12 +1,19 @@
-from constants import TOKEN # Import your own token
 import telebot
 import uuid
 import time
+from flask import Flask, render_template
 from datetime import datetime, timedelta, timezone
 from apscheduler.schedulers.background import BackgroundScheduler
 
+TOKEN = '6033807042:AAGVUHYKdz_bdXDlxzYDWRHtnx1_Erx5hP4'
+
 bot = telebot.TeleBot(TOKEN)
 scheduler = BackgroundScheduler()
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+  return '<h1>Hello Bot!</h1>'
 
 # Our Database
 birthdays = {}
@@ -110,6 +117,8 @@ def greet(message):
   bot.send_message(message.chat.id, "Welcome Birthday Reminder I! You can store here people's birthdays without forgeting who has today a birthday! Start with /Add command to add a new person!")
 
 def main():
+  app.run()
+
   scheduler.start()
   
   bot.polling()
@@ -120,3 +129,4 @@ def main():
   
 if __name__ == '__main__':
   main()
+  checkBirthday()
